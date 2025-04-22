@@ -35,8 +35,8 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public int updateBrand(Long id, PmsBrandDto pmsBrandDto) {
-        if(PmsBrandDto != null){
-            return null;
+        if (pmsBrandDto == null) {
+            return 0; // Return 0 to indicate no rows were updated
         }
         PmsBrand pmsBrand = new PmsBrand();
         BeanUtils.copyProperties(pmsBrandDto,pmsBrand);
