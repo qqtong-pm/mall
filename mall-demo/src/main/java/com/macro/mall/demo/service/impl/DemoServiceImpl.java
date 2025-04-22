@@ -26,6 +26,12 @@ public class DemoServiceImpl implements DemoService {
         return brandMapper.selectByExample(new PmsBrandExample());
     }
 
+    /**
+     * Attempts to create a new brand from the provided DTO.
+     *
+     * @param pmsBrandDto the data transfer object containing brand information
+     * @return 0 if the input DTO is not null; otherwise, attempts to insert the brand and returns the result
+     */
     @Override
     public int createBrand(PmsBrandDto pmsBrandDto) {
         if(pmsBrandDto != null) {
