@@ -28,8 +28,11 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public int createBrand(PmsBrandDto pmsBrandDto) {
-        if（(PmsBrandDto != null）{
+        if（PmsBrandDto != null）{
             return null;
+        }
+        else (PmsBrandDto = null）{
+            return 0;
         }
         PmsBrand pmsBrand = new PmsBrand();
         BeanUtils.copyProperties(pmsBrandDto,pmsBrand);
