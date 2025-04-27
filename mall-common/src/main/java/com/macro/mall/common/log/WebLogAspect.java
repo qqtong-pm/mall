@@ -45,10 +45,12 @@ public class WebLogAspect {
 
     @Before("webLog()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
+      // TODO document why this method is empty
     }
 
     @AfterReturning(value = "webLog()", returning = "ret")
     public void doAfterReturning(Object ret) throws Throwable {
+      // TODO document why this method is empty
     }
 
     @Around("webLog()")
