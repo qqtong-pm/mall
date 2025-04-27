@@ -15,17 +15,17 @@ import java.util.List;
 @Builder
 public class BucketPolicyConfigDto {
 
-    private String Version;
-    private List<Statement> Statement;
+    
+    
 
     @Data
     @EqualsAndHashCode
     @Builder
     public static class Statement {
-        private String Effect;
-        private String Principal;
-        private String Action;
-        private String Resource;
+        
+        
+        
+        
 
     }
 }
