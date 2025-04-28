@@ -34,6 +34,19 @@ public class PmsBrandController {
         return CommonResult.success(brandService.listAllBrand());
     }
 
+    /**
+     * Creates a new brand entry.
+     * @example
+     * const result = createBrand({ name: "BrandName", category: "Category" });
+     * console.log(result); // Expected output: { success: true, data: 1 }
+     * @param {PmsBrandParam} pmsBrand - An object containing the brand details to be added.
+     * @return {CommonResult} - Returns a CommonResult indicating success or failure of the operation.
+     * @description
+     *   - Validates the incoming request body using the @Validated annotation.
+     *   - Utilizes brandService to interact with the data persistence layer.
+     *   - Relies on the brandService's createBrand method to return an integer count indicating the result.
+     *   - Constructs a response based on the success or failure of the brand creation.
+     */
     @ApiOperation(value = "添加品牌")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
@@ -48,6 +61,19 @@ public class PmsBrandController {
         return commonResult;
     }
 
+    /**
+     * Updates the brand information for a given brand ID.
+     * @param {Long} id - The ID of the brand to update.
+     * @param {PmsBrandParam} pmsBrandParam - The parameter object containing updated brand information.
+     * @return {CommonResult} - A result object indicating success or failure of the update operation.
+     * @example
+     * CommonResult result = PmsBrandController.update(1L, pmsBrandParam);
+     * System.out.println(result); // Expected output: CommonResult instance indicating update success or failure
+     * @description
+     *   - The method responds to POST requests sent to the "/update/{id}" endpoint.
+     *   - Utilizes `brandService` to apply updates to the brand data.
+     *   - Returns a success result if one record is updated, otherwise returns a failed result.
+     */
     @ApiOperation(value = "更新品牌")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
@@ -105,6 +131,20 @@ public class PmsBrandController {
         }
     }
 
+    /**
+     * Updates the visibility status of brands in bulk.
+     * @example
+     * let result = updateShowStatus([1, 2, 3], 1);
+     * console.log(result); // Expected output: { success: true, data: 3 }
+     * @param {Array<Long>} ids - List of brand IDs to update visibility status.
+     * @param {Integer} showStatus - Visibility status to be set for the given IDs.
+     * @return {CommonResult} - Returns a success message with the count of updated records or a failure message.
+     * @description
+     *   - The method handles both successful and failed update scenarios.
+     *   - Updates are performed through a service rather than directly accessing the database.
+     *   - Visibility status is represented as an integer where specific values denote different states.
+     *   - Ensures the atomic update of the visibility status for all specified IDs.
+     */
     @ApiOperation(value = "批量更新显示状态")
     @RequestMapping(value = "/update/showStatus", method = RequestMethod.POST)
     @ResponseBody
@@ -118,6 +158,20 @@ public class PmsBrandController {
         }
     }
 
+    /**
+     * Updates the factory status for a batch of manufacturers.
+     * @example
+     * const result = updateFactoryStatus([1, 2, 3], 1);
+     * console.log(result); // Expected output: Number of updated records, or an error message
+     * @param {Array<number>} ids - List of manufacturer IDs to be updated.
+     * @param {number} factoryStatus - New status to be set for the manufacturers.
+     * @return {Object} - Response object indicating the success or failure of the operation.
+     * @description
+     *   - This function handles a request to update the status for multiple manufacturers.
+     *   - Internally uses a service to perform the update in the database.
+     *   - Returns a success message with a count of updated records if successful.
+     *   - Returns a failure message if no records were updated.
+     */
     @ApiOperation(value = "批量更新厂家制造商状态")
     @RequestMapping(value = "/update/factoryStatus", method = RequestMethod.POST)
     @ResponseBody
